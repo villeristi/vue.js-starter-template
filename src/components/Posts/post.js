@@ -1,6 +1,8 @@
 import Vue from 'vue';
 import template from './post.html';
 
+import { postsResource } from 'src/helpers/resources';
+
 export default Vue.extend({
   template,
 
@@ -13,8 +15,8 @@ export default Vue.extend({
   route: {
     data(transition){
       let id = this.$route.params.id;
-      return this.$http.get(`http://jsonplaceholder.typicode.com/posts/${id}`).then((response) => {
-        return { post: response.data }
+      return postsResource.get({ id }).then((response) => {
+        return this.$set('post', response.data);
       }, (response) => {
         console.log(response);
       });
