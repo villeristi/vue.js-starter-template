@@ -9,16 +9,16 @@ export default Vue.extend({
   data() {
     return {
       posts: []
-    }
+    };
   },
 
   route: {
-    data(transition){
+    data(){
       return postsResource.get().then((response) => {
         return this.$set('posts', response.data);
       }, (response) => {
         if (response.status === 404) {
-          this.$router.go('/404')
+          this.$router.go('/404');
         }
       });
     }
