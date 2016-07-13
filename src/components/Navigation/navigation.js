@@ -1,6 +1,6 @@
 import Vue from 'vue';
-import template from './App.html';
+import template from './navigation.html';
 
 export default Vue.extend({
   template
-});
+})

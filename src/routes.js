@@ -15,7 +15,7 @@ const routes = {
     name: 'post',
     component: Post
   },
-  '/404': {
+  '*': {
     component: NotFound
   }
 };
