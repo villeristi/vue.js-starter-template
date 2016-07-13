@@ -11,7 +11,6 @@ export default Vue.extend({
   },
 
   route: {
-    waitForData: true,
     data(transition){
       let id = this.$route.params.id;
       return this.$http.get(`http://jsonplaceholder.typicode.com/posts/${id}`).then((response) => {
