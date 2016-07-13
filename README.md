@@ -10,6 +10,7 @@ Built with:
 * [ESLint](http://eslint.org/)
 * [Webpack](https://webpack.github.io/)
 * [SASS](http://sass-lang.com/)
+* [JSONPlaceholder](http://jsonplaceholder.typicode.com/)
 
 ## Getting started
 
