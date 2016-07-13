@@ -1,3 +1,4 @@
+var path = require('path');
 var webpack = require('webpack');
 var merge = require('webpack-merge');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -13,7 +14,7 @@ module.exports = merge(webpackBase, {
 
     new HtmlWebpackPlugin({
       inject: 'body',
-      template: 'src/index.html'
+      template: path.resolve(__dirname, '../src/index.html')
     }),
 
     new webpack.optimize.OccurenceOrderPlugin(),
