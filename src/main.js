@@ -18,7 +18,7 @@ const router = new VueRouter({
 router.map(routes);
 
 const App = Vue.extend({
-  components: { Navigation },
+  components: { Navigation }
 });
 
 router.start(App, '#app');
