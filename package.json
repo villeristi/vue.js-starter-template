@@ -5,14 +5,19 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --inline --progress --colors --history-api-fallback --config webpack/development.js",
-    "build": "webpack -p --config webpack/production.js"
+    "build": "webpack -p --config webpack/production.js",
+    "lint:js": "./node_modules/.bin/eslint src; exit 0;"
   },
   "keywords": [
     "vue.js",
     "vue.js router"
   ],
   "author": "Wille Ristimäki <villeristimaki@gmail.com>",
-  "license": "ISC",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:villeristi/vue.js-starter-template.git"
+  },
   "dependencies": {
     "vue": "^1.0.26",
     "vue-resource": "^0.9.3",
@@ -27,7 +32,6 @@
     "babel-preset-stage-2": "^6.11.0",
     "css-loader": "^0.23.1",
     "eslint": "^3.0.1",
-    "eslint-config-airbnb-base": "^4.0.0",
     "eslint-friendly-formatter": "^2.0.5",
     "eslint-loader": "^1.4.1",
     "eslint-plugin-html": "^1.5.1",
