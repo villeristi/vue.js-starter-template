@@ -17,7 +17,9 @@ export default Vue.extend({
       return postsResource.get().then((response) => {
         return this.$set('posts', response.data);
       }, (response) => {
-        console.log(response);
+        if (response.status === 404) {
+          this.$router.go('/404')
+        }
       });
     }
   }
