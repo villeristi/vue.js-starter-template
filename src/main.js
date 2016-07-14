@@ -22,3 +22,5 @@ const App = Vue.extend({
 });
 
 router.start(App, '#app');
+
+export { router };
