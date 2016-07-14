@@ -17,10 +17,9 @@ export default Vue.extend({
       const id = this.$route.params.id;
       return postsResource.get({ id }).then((response) => {
         return this.$set('post', response.data);
-      }, (response) => {
-        if (response.status === 404) {
-          this.$router.go('/404');
-        }
+      }, (errorResponse) => {
+        // Handle error...
+        console.log('API responded with:', errorResponse.status);
       });
     }
   }
