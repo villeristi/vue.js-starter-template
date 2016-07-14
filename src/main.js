@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import VueResource from 'vue-resource';
 import VueRouter from 'vue-router';
-import Navigation from './components/Navigation/navigation';
+import Navigation from 'components/Navigation/navigation';
 
 Vue.use(VueRouter);
 Vue.use(VueResource);

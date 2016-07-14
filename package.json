@@ -1,8 +1,7 @@
 {
   "name": "vue.js-starter-template",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A starter for Vue.js-projects",
-  "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --inline --progress --colors --history-api-fallback --config webpack/development.js",
     "build": "webpack -p --config webpack/production.js",
