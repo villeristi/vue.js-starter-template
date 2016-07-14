@@ -7,6 +7,7 @@ Built with:
 * [Vue Router](https://github.com/vuejs/vue-router)
 * [Vue Resouce](https://github.com/vuejs/vue-resource)
 * [Babel](https://babeljs.io/)
+* [BrowserSync](https://www.browsersync.io/)
 * [ESLint](http://eslint.org/)
 * [Webpack](https://webpack.github.io/)
 * [SASS](http://sass-lang.com/)
@@ -22,7 +23,11 @@ Clone the repo & run `npm install` from the project root
 npm start
 ```
 
-Runs the Webpack module-bundler, starts watching for changes & launches the development server to http://localhost/8080
+Runs the Webpack module-bundler, starts watching for changes & launches the BrowserSync server to [http://localhost:3000](http://localhost:3000) (it's possible to change the port from `package.json` config-section).
+
+**Note!** Webpack handles all the reloading stuff while BrowserSync just proxies the default webpack-port (`8080`) giving the possibility to connect to dev-server from multiple devices: 
+![BrowserSync](.github/browsersync.png)
+
 
 ```shell
 npm run lint:js
