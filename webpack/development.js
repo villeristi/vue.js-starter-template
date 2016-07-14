@@ -16,10 +16,10 @@ module.exports = merge(webpackBase, {
         port: config.port,
         // Proxy the default webpack dev-server port
         proxy: 'http://localhost:8080/',
+        notify: false,
         open: false,
-      },
-      {
-        reload: false
+        // Let webpack handle the reload
+        codeSync: false
       }
     ),
 
