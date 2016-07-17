@@ -1,5 +1,5 @@
 var path = require('path');
-var rootPath = '../';
+var autoprefixer = require('autoprefixer');
 
 module.exports = {
 
@@ -30,7 +30,7 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'eslint',
-        include: rootPath,
+        include: path.resolve(__dirname, '../src'),
         exclude: /node_modules/
       }
     ],
@@ -54,7 +54,7 @@ module.exports = {
 
       {
         test: /\.scss$/,
-        loader: 'style!css!sass?sourceMap'
+        loader: 'style!css!sass?sourceMap!postcss'
       },
 
       {
@@ -69,12 +69,16 @@ module.exports = {
     ]
   },
 
+  babel: {
+    presets: ['es2015'],
+    plugins: ['transform-runtime']
+  },
+
   eslint: {
     formatter: require('eslint-friendly-formatter')
   },
 
-  babel: {
-    presets: ['es2015'],
-    plugins: ['transform-runtime']
+  postcss: function() {
+    return [autoprefixer];
   }
-}
+};
