@@ -26,6 +26,7 @@
     "vue-router": "^0.7.13"
   },
   "devDependencies": {
+    "autoprefixer": "^6.3.7",
     "babel-core": "^6.10.4",
     "babel-eslint": "^6.1.2",
     "babel-loader": "^6.2.4",
@@ -45,6 +46,7 @@
     "html-webpack-plugin": "^2.22.0",
     "imports-loader": "^0.6.5",
     "node-sass": "^3.8.0",
+    "postcss-loader": "^0.9.1",
     "prerender-spa-plugin": "^1.1.0",
     "require-dir": "^0.3.0",
     "sass-loader": "^4.0.0",
