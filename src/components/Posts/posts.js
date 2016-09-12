@@ -1,25 +1,24 @@
 import Vue from 'vue';
+import store from '../../state/store';
+import { fetchAllPosts } from '../../state/posts/actions';
 import template from './posts.html';
 
-import { postsResource } from 'src/helpers/resources';
+// import { postsResource } from 'src/helpers/resources';
 
 export default Vue.extend({
   template,
 
   data() {
     return {
-      posts: []
+      posts: this.$select('posts')
     };
   },
 
   route: {
     data(){
-      return postsResource.get().then((response) => {
-        return this.$set('posts', response.data);
-      }, (errorResponse) => {
-        // Handle error...
-        console.log('API responded with:', errorResponse.status);
-      });
+      if (!this.posts.get('allPosts').length) {
+        store.dispatch(fetchAllPosts());
+      }
     }
   }
 });
