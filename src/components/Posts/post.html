@@ -1,10 +1,10 @@
-<div class="single-post" v-show="!UI.get('isLoading')">
+<div class="single-post" v-show="!posts.get('isLoading')">
 
   <div class="page-header">
-    <h1>{{post.title}}</h1>
+    <h1>{{posts.getIn(['post', 'title'])}}</h1>
   </div>
 
-  <p>{{post.body}}</p>
+  <p>{{posts.getIn(['post', 'body'])}}</p>
 
   <a v-link="{ path: '/posts' }">&raquo; Back to posts</a>
 </div>
