@@ -9,10 +9,7 @@ export const PostsActionTypes = {
   POST_ERROR: 'POSTS/POST_ERROR'
 };
 
-/**
- * All posts
- */
-
+// All posts
 function requestAllPosts() {
   return { type: PostsActionTypes.REQUEST_ALL_POSTS };
 }
@@ -31,6 +28,25 @@ function allPostsError(data) {
   };
 }
 
+// Single
+function requestPost() {
+  return { type: PostsActionTypes.REQUEST_POST };
+}
+
+function receivePost(data) {
+  return {
+    type: PostsActionTypes.RECEIVE_POST,
+    data: data
+  };
+}
+
+function postError(data) {
+  return {
+    type: PostsActionTypes.POST_ERROR,
+    data: data
+  };
+}
+
 export function fetchAllPosts() {
   return (dispatch) => {
     dispatch(requestAllPosts());
@@ -40,6 +56,19 @@ export function fetchAllPosts() {
         dispatch(receiveAllPosts(response.data));
       }, (errorResponse) => {
         dispatch(allPostsError(errorResponse));
+      });
+  };
+}
+
+export function fetchPost(opts = {}) {
+  return (dispatch) => {
+    dispatch(requestPost());
+
+    return postsResource.get(opts)
+      .then((response) => {
+        dispatch(receivePost(response.data));
+      }, (errorResponse) => {
+        dispatch(postError(errorResponse));
       });
   };
 }
