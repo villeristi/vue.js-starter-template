@@ -3,8 +3,6 @@ import store from '../../state/store';
 import { fetchAllPosts } from '../../state/posts/actions';
 import template from './posts.html';
 
-// import { postsResource } from 'src/helpers/resources';
-
 export default Vue.extend({
   template,
 
