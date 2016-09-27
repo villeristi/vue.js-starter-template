@@ -55,7 +55,7 @@ module.exports = {
 
       {
         test: /\.scss$/,
-        loader: 'style!css!sass?sourceMap!postcss'
+        loader: 'style!css!postcss!sass?sourceMap'
       },
 
       {
