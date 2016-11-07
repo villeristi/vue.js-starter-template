@@ -14,7 +14,7 @@ Vue.http.interceptors.push((request, next) => {
   next((response) => {
     // Handle global API 404 =>
     if (response.status === 404) {
-      router.go('/404');
+      router.push('/404');
     }
   });
 });

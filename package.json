@@ -16,8 +16,8 @@
     "port": 3000
   },
   "scripts": {
-    "start": "webpack-dev-server --inline --progress --colors --history-api-fallback --config webpack/development.js",
-    "build": "webpack -p --config webpack/production.js",
+    "start": "webpack-dev-server --config webpack/development.js --colors --history-api-fallback --inline --progress",
+    "build": "webpack --config webpack/production.js -p --progress",
     "lint:js": "./node_modules/.bin/eslint src; exit 0;"
   },
   "dependencies": {
@@ -25,9 +25,9 @@
     "redux": "^3.6.0",
     "redux-thunk": "^2.1.0",
     "revue": "^2.2.0",
-    "vue": "^1.0.26",
+    "vue": "^2.0.4",
     "vue-resource": "^0.9.3",
-    "vue-router": "^0.7.13"
+    "vue-router": "^2.0.1"
   },
   "devDependencies": {
     "autoprefixer": "^6.3.7",

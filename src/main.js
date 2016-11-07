@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import Vue from 'vue';
 import VueResource from 'vue-resource';
 import VueRouter from 'vue-router';
@@ -10,33 +11,28 @@ Vue.use(VueResource);
 import routes from 'src/routes';
 import 'src/style.scss';
 
-const router = new VueRouter({
-  hashbang: false,
-  history: true,
+export const router = new VueRouter({
+  routes,
+  mode: 'history',
   linkActiveClass: 'active'
 });
 
-router.map(routes);
-
-const App = Vue.extend({
+export const App = new Vue({
+  router,
   components: {
     Navigation,
     Loader
   },
 
-  data(){
-    return {
-      UI: this.$select('UI')
-    };
-  },
+  // data(){
+  //   return {
+  //     UI: this.$select('UI')
+  //   };
+  // },
 
-  ready(){
-    this.$root.$on('UIChange', function(data) {
-      this.$set('UI', data);
-    });
+  mounted(){
+    // this.$root.$on('UIChange', function(data) {
+    //   this.$set('UI', 'isLoading', false);
+    // });
   }
-});
-
-router.start(App, '#app');
-
-export default router;
+}).$mount('#app');

@@ -3,20 +3,24 @@ import Posts from 'components/Posts/posts';
 import Post from 'components/Posts/post';
 import NotFound from 'components/NotFound/notFound';
 
-const routes = {
-  '/': {
+const routes = [
+  {
+    path: '/',
     component: Home
   },
-  '/posts': {
+  {
+    path: '/posts',
     component: Posts
   },
-  '/post/:id': {
+  {
+    path: '/post/:id',
     name: 'post',
     component: Post
   },
-  '*': {
+  {
+    path: '*',
     component: NotFound
   }
-};
+];
 
 export default routes;

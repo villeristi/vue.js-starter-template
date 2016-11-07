@@ -12,11 +12,9 @@ export default Vue.extend({
     };
   },
 
-  route: {
-    data(){
-      if (!this.posts.get('allPosts').length) {
-        store.dispatch(fetchAllPosts());
-      }
+  created(){
+    if (!this.posts.get('allPosts').length) {
+      store.dispatch(fetchAllPosts());
     }
   }
 });

@@ -1,16 +1,16 @@
-<div class="all-posts" v-if="!!posts.get('allPosts').length">
+<div class="all-posts">
   <div class="page-header">
     <h1>Posts
-      <small class="pull-right"><a v-link="{ path: '/' }">Back to home</a></small>
+      <small class="pull-right"><router-link to="/">Back to home</router-link></small>
     </h1>
   </div>
 
-  <div class="list-group">
-    <a class="list-group-item"
+  <div class="list-group"  v-if="!!posts.get('allPosts').length">
+    <router-link class="list-group-item"
        v-for="post in posts.get('allPosts')"
-       v-link="{ name: 'post', params: { id: post.id }}"
+       to="{ name: 'post', params: { id: post.id }}"
        v-if="!posts.get('isLoading')">
       <strong>#{{$index+1}}</strong> {{post.title}}
-    </a>
+    </router-link>
   </div>
 </div>

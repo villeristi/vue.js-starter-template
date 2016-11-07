@@ -12,6 +12,7 @@ export const initialState = fromJS({
  */
 
 export function handleLoadingToggle(state, action) {
+  console.log(state);
   return state.set('isLoading', action.isLoading);
 }
 
