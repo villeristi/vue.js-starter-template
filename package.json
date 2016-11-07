@@ -1,10 +1,11 @@
 {
   "name": "vue.js-starter-template",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "A starter for Vue.js-projects",
   "keywords": [
     "vue.js",
-    "vue.js router"
+    "vue.js router",
+    "vue.js resource"
   ],
   "author": "Wille Ristimäki <villeristimaki@gmail.com>",
   "license": "MIT",
@@ -21,9 +22,9 @@
     "lint:js": "./node_modules/.bin/eslint src; exit 0;"
   },
   "dependencies": {
-    "vue": "^1.0.26",
-    "vue-resource": "^0.9.3",
-    "vue-router": "^0.7.13"
+    "vue": "^2.0.5",
+    "vue-resource": "^1.0.3",
+    "vue-router": "^2.0.1"
   },
   "devDependencies": {
     "autoprefixer": "^6.3.7",
