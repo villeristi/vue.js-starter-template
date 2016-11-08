@@ -1,5 +1,7 @@
 import Vue from 'vue';
+
 import { postsResource } from 'src/helpers/resources';
+import { LoadingState } from 'src/main';
 
 import template from './post.html';
 
@@ -12,14 +14,21 @@ export default Vue.extend({
     };
   },
 
-  route: {
-    data() {
+  created(){
+    this.fetchPost();
+  },
+
+  methods: {
+    fetchPost(){
       const id = this.$route.params.id;
+      LoadingState.$emit('toggle', true);
       return postsResource.get({ id }).then((response) => {
-        return this.$set('post', response.data);
+        this.post = response.data;
+        LoadingState.$emit('toggle', false);
       }, (errorResponse) => {
         // Handle error...
         console.log('API responded with:', errorResponse.status);
+        LoadingState.$emit('toggle', false);
       });
     }
   }
