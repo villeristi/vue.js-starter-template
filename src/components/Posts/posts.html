@@ -1,13 +1,12 @@
 <div>
-    <div class="page-header">
-        <h1>Posts <small class="pull-right"><a v-link="{ path: '/' }">Back to home</a></small></h1>
-    </div>
 
-    <div class="list-group">
-        <a class="list-group-item"
-           v-for="post in posts"
-           v-link="{ name: 'post', params: { id: post.id }}">
-            {{post.title}}
-        </a>
-    </div>
+  <h1 class="mb-2"><i class="fa fa-file-text-o"></i> Posts</h1>
+
+  <div class="list-group">
+    <router-link class="list-group-item"
+                 v-for="(post, index) in posts"
+                 :to="{ name: 'post', params: { id: post.id }}">
+      <i class="fa fa-hashtag"></i> {{ index+1 }} | {{ post.title }}
+    </router-link>
+  </div>
 </div>

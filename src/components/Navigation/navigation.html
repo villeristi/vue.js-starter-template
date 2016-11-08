@@ -1,15 +1,13 @@
-<nav class="navbar navbar-inverse navbar-static-top">
-    <div class="navbar-header">
-        <a class="navbar-brand" v-link="{ path: '/', exact: true }">
-            <img alt="Brand" src="~assets/images/logo.png" height="20">
-        </a>
-    </div>
-    <ul class="nav navbar-nav">
-        <li v-link-active>
-            <a v-link="{ path: '/', exact: true }">Home</a>
-        </li>
-        <li v-link-active>
-            <a v-link="{ path: '/posts' }">Posts</a>
-        </li>
-    </ul>
+<nav class="navbar navbar-fixed-top navbar-dark bg-inverse">
+    <router-link class="navbar-brand" to="/">
+      <img alt="Brand" src="~assets/images/logo.png" height="20">
+    </router-link>
+  <ul class="nav navbar-nav">
+    <router-link class="nav-item" tag="li" to="/" exact>
+      <a class="nav-link"><i class="fa fa-home"></i> Home</a>
+    </router-link>
+    <router-link class="nav-item" tag="li" to="/posts" exact>
+      <a class="nav-link"><i class="fa fa-file-text-o"></i> Posts</a>
+    </router-link>
+  </ul>
 </nav>
