@@ -1,0 +1,27 @@
+::selection {
+  background: $brand-primary;
+  color: #fff;
+  text-shadow: 0px 0px 0px;
+}
+
+::-moz-selection {
+  background: $brand-primary;
+  color: #fff;
+  text-shadow: 0px 0px 0px;
+}
+
+::-webkit-selection {
+  background: $brand-primary;
+  color: #fff;
+  text-shadow: 0px 0px 0px;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  height: 100%;
+}
+
+body {
+  padding-top: 5em;
+}
