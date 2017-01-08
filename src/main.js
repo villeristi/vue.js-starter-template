@@ -11,6 +11,8 @@ Vue.use(VueResource);
 import routes from 'src/routes';
 import 'src/style.scss';
 
+export const LoadingState = new Vue();
+
 export const router = new VueRouter({
   routes,
   mode: 'history',
@@ -24,15 +26,15 @@ export const App = new Vue({
     Loader
   },
 
-  // data(){
-  //   return {
-  //     UI: this.$select('UI')
-  //   };
-  // },
+  data(){
+    return {
+      isLoading: false
+    };
+  },
 
-  mounted(){
-    // this.$root.$on('UIChange', function(data) {
-    //   this.$set('UI', 'isLoading', false);
-    // });
+  created(){
+    LoadingState.$on('toggle', (isLoading) => {
+      this.isLoading = isLoading;
+    });
   }
 }).$mount('#app');

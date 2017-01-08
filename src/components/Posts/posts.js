@@ -1,7 +1,8 @@
 import Vue from 'vue';
-import store from '../../state/store';
-import { fetchAllPosts } from '../../state/posts/actions';
 import template from './posts.html';
+
+import { LoadingState } from 'src/main';
+import { postsResource } from 'src/helpers/resources';
 
 export default Vue.extend({
   template,
@@ -13,8 +14,21 @@ export default Vue.extend({
   },
 
   created(){
-    if (!this.posts.get('allPosts').length) {
-      store.dispatch(fetchAllPosts());
+    this.fetchPosts();
+  },
+
+  methods: {
+    fetchPosts(){
+      LoadingState.$emit('toggle', true);
+      return postsResource.get().then((response) => {
+        this.posts = response.data;
+        LoadingState.$emit('toggle', false);
+      }, (errorResponse) => {
+        // Handle error...
+        console.log('API responded with:', errorResponse.status);
+        LoadingState.$emit('toggle', false);
+      });
     }
   }
+
 });

@@ -1,8 +1,7 @@
-/*eslint-disable no-unused-vars*/
 import Vue from 'vue';
+
 import { postsResource } from 'src/helpers/resources';
-import store from '../../state/store';
-import { fetchPost } from '../../state/posts/actions';
+import { LoadingState } from 'src/main';
 
 import template from './post.html';
 
@@ -15,9 +14,22 @@ export default Vue.extend({
     };
   },
 
-  route: {
-    data() {
-      store.dispatch(fetchPost({ id: this.$route.params.id }));
+  created(){
+    this.fetchPost();
+  },
+
+  methods: {
+    fetchPost(){
+      const id = this.$route.params.id;
+      LoadingState.$emit('toggle', true);
+      return postsResource.get({ id }).then((response) => {
+        this.post = response.data;
+        LoadingState.$emit('toggle', false);
+      }, (errorResponse) => {
+        // Handle error...
+        console.log('API responded with:', errorResponse.status);
+        LoadingState.$emit('toggle', false);
+      });
     }
   }
 });

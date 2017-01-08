@@ -1,15 +1,13 @@
-<nav class="navbar navbar-inverse navbar-static-top">
-  <div class="navbar-header">
+<nav class="navbar fixed-top navbar-toggleable-sm navbar-inverse bg-inverse">
     <router-link class="navbar-brand" to="/">
       <img alt="Brand" src="~assets/images/logo.png" height="20">
     </router-link>
-  </div>
-  <ul class="nav navbar-nav">
-    <router-link tag="li" to="/">
-      <a>Home</a>
+  <ul class="navbar-nav">
+    <router-link class="nav-item" tag="li" to="/" exact>
+      <a class="nav-link"><i class="fa fa-home"></i> Home</a>
     </router-link>
-    <router-link tag="li" to="/posts">
-      <a>Posts</a>
+    <router-link class="nav-item" tag="li" to="/posts" exact>
+      <a class="nav-link"><i class="fa fa-file-text-o"></i> Posts</a>
     </router-link>
   </ul>
 </nav>

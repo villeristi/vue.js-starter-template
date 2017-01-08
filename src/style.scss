@@ -1,22 +1,8 @@
-@import url('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css');
+@import "styles/variables";
 
-// I'm a big fan of hot pink <3
-  $hot-pink: #fe57a1;
+// npm depencies
+@import "~bootstrap/scss/bootstrap";
+@import "~font-awesome/scss/font-awesome";
 
-::selection {
-  background: $hot-pink;
-  color: #fff;
-  text-shadow: 0px 0px 0px;
-}
-
-::-moz-selection {
-  background: $hot-pink;
-  color: #fff;
-  text-shadow: 0px 0px 0px;
-}
-
-::-webkit-selection {
-  background: $hot-pink;
-  color: #fff;
-  text-shadow: 0px 0px 0px;
-}
+// Project specific
+@import "styles/global";

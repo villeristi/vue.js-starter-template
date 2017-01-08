@@ -3,8 +3,8 @@
 A bare-bones starter-template to get your hands dirty with awesome [Vue.js](https://github.com/vuejs/vue) library.
 
 Built with:
-* [Vue.js](https://github.com/vuejs/vue)
-* [Vue Router](https://github.com/vuejs/vue-router)
+* [Vue.js 2](https://github.com/vuejs/vue)
+* [Vue Router 2](https://github.com/vuejs/vue-router)
 * [Vue Resouce](https://github.com/vuejs/vue-resource)
 * [Babel](https://babeljs.io/)
 * [BrowserSync](https://www.browsersync.io/)
@@ -12,6 +12,11 @@ Built with:
 * [Webpack](https://webpack.github.io/)
 * [SASS](http://sass-lang.com/)
 * [JSONPlaceholder](http://jsonplaceholder.typicode.com/)
+* [Bootstrap 4](https://v4-alpha.getbootstrap.com/)
+* [Font Awesome](http://fontawesome.io/)
+
+## Demo
+Navigate to [http://vue-starter.testi.in/](http://vue-starter.testi.in/) and see the awesomeness IRL :bowtie:
 
 ## Getting started
 
