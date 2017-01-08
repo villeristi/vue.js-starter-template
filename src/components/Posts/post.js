@@ -10,7 +10,7 @@ export default Vue.extend({
 
   data() {
     return {
-      posts: this.$select('posts')
+      post: {}
     };
   },
 

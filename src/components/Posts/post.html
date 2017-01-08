@@ -1,17 +1,5 @@
-<<<<<<< HEAD
-<div class="single-post" v-show="!posts.get('isLoading')">
-
-  <div class="page-header">
-    <h1>{{posts.getIn(['post', 'title'])}}</h1>
-  </div>
-
-  <p>{{posts.getIn(['post', 'body'])}}</p>
-
-  <router-link to="/posts">&raquo; Back to posts</router-link>
-=======
 <div class="card card-block">
   <h1 class="card-title">{{ post.title }}</h1>
   <p class="card-text">{{ post.body }}</p>
   <router-link class="card-link" to="/posts"><i class="fa fa-chevron-left"></i> Back to posts</router-link>
->>>>>>> hotfix/0.5.1
 </div>
