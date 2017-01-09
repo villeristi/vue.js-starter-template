@@ -45,3 +45,6 @@ npm run build
 ```
 
 Runs the webpack module-bundler with production-settings (compress etc.) and builds the project to `/build` directory.
+
+## Single File Components
+See [documentation](docs/single-file-components.md) for example usage for [single file components](https://vuejs.org/v2/guide/single-file-components.html).
