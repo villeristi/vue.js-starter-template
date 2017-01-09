@@ -22,7 +22,6 @@ module.exports = {
       'src': path.resolve(__dirname, '../src'),
       'assets': path.resolve(__dirname, '../src/assets'),
       'components': path.resolve(__dirname, '../src/components'),
-      'state': path.resolve(__dirname, '../src/state'),
       'vue$': 'vue/dist/vue.js'
     }
   },
@@ -38,6 +37,11 @@ module.exports = {
     ],
 
     loaders: [
+      {
+        test: /\.vue$/,
+        loader: 'vue'
+      },
+
       {
         test: /\.html$/,
         loader: 'html'
@@ -80,7 +84,7 @@ module.exports = {
     formatter: require('eslint-friendly-formatter')
   },
 
-  postcss: function() {
+  postcss: function () {
     return [autoprefixer];
   }
 };
