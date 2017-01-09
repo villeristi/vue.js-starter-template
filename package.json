@@ -1,6 +1,6 @@
 {
   "name": "vue.js-starter-template",
-  "version": "0.5.1",
+  "version": "0.6.0",
   "description": "A starter for Vue.js-projects",
   "keywords": [
     "vue.js",
@@ -17,14 +17,14 @@
     "port": 3000
   },
   "scripts": {
-    "start": "webpack-dev-server --inline --progress --colors --history-api-fallback --config webpack/development.js",
-    "build": "webpack -p --config webpack/production.js",
+    "start": "webpack-dev-server --config webpack/development.js --colors --history-api-fallback --inline --progress",
+    "build": "webpack --config webpack/production.js -p --progress",
     "lint:js": "./node_modules/.bin/eslint src; exit 0;"
   },
   "dependencies": {
     "bootstrap": "4.0.0-alpha.6",
     "font-awesome": "^4.7.0",
-    "vue": "^2.0.5",
+    "vue": "^2.1.8",
     "vue-resource": "^1.0.3",
     "vue-router": "^2.0.1"
   },
@@ -46,6 +46,7 @@
     "eslint-plugin-import": "^1.10.2",
     "exports-loader": "^0.6.3",
     "file-loader": "^0.9.0",
+    "html-loader": "^0.4.4",
     "html-webpack-plugin": "^2.22.0",
     "imports-loader": "^0.6.5",
     "node-sass": "^3.8.0",
@@ -56,7 +57,8 @@
     "source-map-loader": "^0.1.5",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
-    "vue-html-loader": "^1.2.3",
+    "vue-loader": "^10.0.2",
+    "vue-template-compiler": "^2.1.8",
     "webpack": "^1.13.1",
     "webpack-cleanup-plugin": "^0.2.0",
     "webpack-dev-server": "^1.14.1",

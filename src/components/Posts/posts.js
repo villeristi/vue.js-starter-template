@@ -22,12 +22,14 @@ export default Vue.extend({
       LoadingState.$emit('toggle', true);
       return postsResource.get().then((response) => {
         this.posts = response.data;
-        LoadingState.$emit('toggle', false);
-      }, (errorResponse) => {
-        // Handle error...
-        console.log('API responded with:', errorResponse.status);
-        LoadingState.$emit('toggle', false);
-      });
+      })
+        .catch((errorResponse) => {
+          // Handle error...
+          console.log('API responded with:', errorResponse.status);
+        })
+        .finally(() => {
+          LoadingState.$emit('toggle', false);
+        });
     }
   }
 
