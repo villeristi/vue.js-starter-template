@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import Vue from 'vue';
 import VueResource from 'vue-resource';
 import VueRouter from 'vue-router';
