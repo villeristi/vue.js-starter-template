@@ -40,7 +40,7 @@ module.exports = {
     loaders: [
       {
         test: /\.html$/,
-        loader: 'vue-html'
+        loader: 'html'
       },
 
       {
