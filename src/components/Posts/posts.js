@@ -20,10 +20,11 @@ export default Vue.extend({
 
   methods: {
     fetchPosts(){
-      return postsResource.get().then((response) => {
-        this.posts = response.data;
-      })
       setLoading(true);
+      return postsResource.get()
+        .then((response) => {
+          this.posts = response.data;
+        })
         .catch((errorResponse) => {
           // Handle error...
           console.log('API responded with:', errorResponse.status);
