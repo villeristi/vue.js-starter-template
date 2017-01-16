@@ -14,18 +14,20 @@ Built with:
 * [JSONPlaceholder](http://jsonplaceholder.typicode.com/)
 * [Bootstrap 4](https://v4-alpha.getbootstrap.com/)
 * [Font Awesome](http://fontawesome.io/)
-
-## Demo
-Navigate to [http://vue-starter.testi.in/](http://vue-starter.testi.in/) and see the awesomeness IRL :bowtie:
+* [Yarn](https://yarnpkg.com/en/docs/install)
 
 ## Getting started
 
-Clone the repo & run `npm install` from the project root
+1. Be sure you have [Yarn](https://yarnpkg.com/en/docs/install) installed globally.
+2. Clone the repo & run `yarn` from the project root
+
+## Single File Components
+See [instructions](docs/single-file-components.md) for example usage of [single file components](https://vuejs.org/v2/guide/single-file-components.html).
 
 ## Available commands
 
-```shell
-npm start
+```sh
+yarn start
 ```
 
 Runs the Webpack module-bundler, starts watching for changes & launches the BrowserSync server to [http://localhost:3000](http://localhost:3000) (it's possible to change the port from `package.json` config-section).
@@ -34,17 +36,17 @@ Runs the Webpack module-bundler, starts watching for changes & launches the Brow
 ![BrowserSync](.github/browsersync.png)
 
 
-```shell
-npm run lint:js
+```sh
+yarn lint:js
 ```
 
 Lints javascript-files inside `/src` directory
 
-```shell
-npm run build
+```sh
+yarn build
 ```
 
 Runs the webpack module-bundler with production-settings (compress etc.) and builds the project to `/build` directory.
 
-## Single File Components
-See [documentation](docs/single-file-components.md) for example usage for [single file components](https://vuejs.org/v2/guide/single-file-components.html).
+## Demo
+Navigate to [http://vue-starter.testi.in/](http://vue-starter.testi.in/) and see the awesomeness IRL :bowtie:
