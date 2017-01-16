@@ -18,7 +18,7 @@ export const router = new VueRouter({
   linkActiveClass: 'active'
 });
 
-export const App = new Vue({
+new Vue({
   router,
   components: {
     Navigation,
