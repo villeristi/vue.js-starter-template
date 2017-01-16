@@ -1,8 +1,9 @@
 import Vue from 'vue';
-import template from './posts.html';
 
-import { LoadingState } from 'src/main';
-import { postsResource } from 'src/helpers/resources';
+import { postsResource } from 'src/util/resources';
+import { setLoading } from 'src/util/helpers';
+
+import template from './posts.html';
 
 export default Vue.extend({
   template,
@@ -19,16 +20,16 @@ export default Vue.extend({
 
   methods: {
     fetchPosts(){
-      LoadingState.$emit('toggle', true);
       return postsResource.get().then((response) => {
         this.posts = response.data;
       })
+      setLoading(true);
         .catch((errorResponse) => {
           // Handle error...
           console.log('API responded with:', errorResponse.status);
         })
         .finally(() => {
-          LoadingState.$emit('toggle', false);
+          setLoading(false);
         });
     }
   }
