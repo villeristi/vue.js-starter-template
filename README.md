@@ -1,5 +1,9 @@
 # Vue.js starter template
 
+<p align="center">
+  <img src="src/assets/images/logo.png" height="100" />
+</p>
+
 A bare-bones starter-template to get your hands dirty with awesome [Vue.js](https://github.com/vuejs/vue) library.
 
 Built with:
