@@ -6,14 +6,15 @@ Built with:
 * [Vue.js 2](https://github.com/vuejs/vue)
 * [Vue Router 2](https://github.com/vuejs/vue-router)
 * [Vue Resouce](https://github.com/vuejs/vue-resource)
+* [Axios](https://github.com/mzabriskie/axios)
 * [Babel](https://babeljs.io/)
+* [Bootstrap 4](https://v4-alpha.getbootstrap.com/)
 * [BrowserSync](https://www.browsersync.io/)
 * [ESLint](http://eslint.org/)
-* [Webpack](https://webpack.github.io/)
-* [SASS](http://sass-lang.com/)
-* [JSONPlaceholder](http://jsonplaceholder.typicode.com/)
-* [Bootstrap 4](https://v4-alpha.getbootstrap.com/)
 * [Font Awesome](http://fontawesome.io/)
+* [JSONPlaceholder](http://jsonplaceholder.typicode.com/)
+* [SASS](http://sass-lang.com/)
+* [Webpack](https://webpack.github.io/)
 * [Yarn](https://yarnpkg.com/en/docs/install)
 
 ## Getting started
@@ -49,4 +50,4 @@ yarn build
 Runs the webpack module-bundler with production-settings (compress etc.) and builds the project to `/build` directory.
 
 ## Demo
-Navigate to [http://vue-starter.testi.in/](http://vue-starter.testi.in/) and see the awesomeness IRL :bowtie:
+Navigate to [https://vue-starter.ville.io/](http://vue-starter.testi.in/) and see the awesomeness IRL :bowtie:
