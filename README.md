@@ -54,4 +54,4 @@ yarn build
 Runs the webpack module-bundler with production-settings (compress etc.) and builds the project to `/build` directory.
 
 ## Demo
-Navigate to [https://vue-starter.ville.io/](http://vue-starter.testi.in/) and see the awesomeness IRL :bowtie:
+Navigate to [https://vue-starter.ville.io/](https://vue-starter.ville.io/) and see the awesomeness IRL :bowtie:
