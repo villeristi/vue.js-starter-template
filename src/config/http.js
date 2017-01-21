@@ -1,20 +1,24 @@
-import Vue from 'vue';
-import VueResource from 'vue-resource';
-import { router } from 'src/main';
+import { setLoading } from 'src/util/helpers';
+import { postsResource } from 'src/util/resources';
 
-import { API_BASE } from 'src/config/constants';
+// Request interceptor
+postsResource.interceptors.request.use((config) => {
+  setLoading(true);
+  return config;
+}, (error) => {
+  setLoading(false);
+  console.log('RequestError: ', error);
+  // Do something with request error
+  return Promise.reject(error);
+});
 
-Vue.use(VueResource);
-
-Vue.http.options = {
-  root: API_BASE
-};
-
-Vue.http.interceptors.push((request, next) => {
-  next((response) => {
-    // Handle global API 404 =>
-    if (response.status === 404) {
-      router.push('/404');
-    }
-  });
+// Response interceptor
+postsResource.interceptors.response.use((response) => {
+  setLoading(false);
+  return response;
+}, (error) => {
+  setLoading(false);
+  console.log('ResponseError: ', error);
+  // Do something with response error
+  return Promise.reject(error);
 });
