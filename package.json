@@ -22,10 +22,12 @@
     "lint:js": "./node_modules/.bin/eslint src; exit 0;"
   },
   "dependencies": {
+    "axios": "^0.15.3",
     "bootstrap": "4.0.0-alpha.6",
     "font-awesome": "^4.7.0",
+    "vee-validate": "^2.0.0-beta.18",
     "vue": "^2.1.8",
-    "vue-resource": "^1.0.3",
+    "vue-form": "^0.3.1",
     "vue-router": "^2.0.1"
   },
   "devDependencies": {
@@ -62,6 +64,7 @@
     "webpack": "^1.13.1",
     "webpack-cleanup-plugin": "^0.2.0",
     "webpack-dev-server": "^1.14.1",
-    "webpack-merge": "^0.14.0"
+    "webpack-merge": "^0.14.0",
+    "webpack-notifier": "^1.5.0"
   }
 }
