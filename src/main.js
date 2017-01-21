@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
+import { LoadingState } from 'src/config/loading-state';
 import Navigation from 'components/Navigation/navigation';
 import Loader from 'components/Loader/Loader';
 
@@ -9,8 +10,6 @@ Vue.use(VueRouter);
 import 'src/config/http';
 import routes from 'src/routes';
 import 'src/style.scss';
-
-export const LoadingState = new Vue();
 
 export const router = new VueRouter({
   routes,
