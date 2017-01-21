@@ -1,11 +1,11 @@
 {
   "name": "vue.js-starter-template",
-  "version": "0.6.2",
+  "version": "0.7.0",
   "description": "A starter for Vue.js-projects",
   "keywords": [
     "vue.js",
     "vue.js router",
-    "vue.js resource"
+    "axios"
   ],
   "author": "Wille Ristimäki <villeristimaki@gmail.com>",
   "license": "MIT",
