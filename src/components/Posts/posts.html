@@ -4,8 +4,7 @@
   <div class="list-group">
     <router-link class="list-group-item"
                  v-for="(post, index) in posts"
-                 :to="{ name: 'post', params: { id: post.id }}">
-      <i class="fa fa-hashtag"></i> {{ index+1 }} | {{ post.title }}
+                 :to="{ name: 'post', params: { id: post.id }}">#{{ index+1 }} {{ post.title }}
     </router-link>
   </div>
 </div>
