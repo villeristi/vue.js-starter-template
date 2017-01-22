@@ -9,7 +9,9 @@ var webpackBase = require('./webpack.base.js');
 module.exports = merge(webpackBase, {
   plugins: [
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': '"production"'
+      'process.env': {
+        NODE_ENV: '"production"'
+      }
     }),
 
     new HtmlWebpackPlugin({
