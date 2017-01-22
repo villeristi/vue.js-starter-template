@@ -1,11 +1,12 @@
 {
   "name": "vue.js-starter-template",
-  "version": "0.7.2",
+  "version": "0.7.3",
   "description": "A starter for Vue.js-projects",
   "keywords": [
     "vue.js",
     "vue.js router",
-    "axios"
+    "axios",
+    "animate.css"
   ],
   "author": "Wille Ristimäki <villeristimaki@gmail.com>",
   "license": "MIT",
@@ -27,7 +28,6 @@
     "font-awesome": "^4.7.0",
     "vee-validate": "^2.0.0-beta.18",
     "vue": "^2.1.8",
-    "vue-form": "^0.3.1",
     "vue-router": "^2.0.1"
   },
   "devDependencies": {
