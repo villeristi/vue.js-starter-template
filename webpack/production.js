@@ -18,7 +18,8 @@ module.exports = merge(webpackBase, {
       minify: {
         caseSensitive: true,
         collapseWhitespace: true
-      }
+      },
+      favicon: path.resolve(__dirname, '../src/assets/images/favicon.ico')
     }),
     new WebpackCleanupPlugin(),
     new webpack.optimize.OccurenceOrderPlugin(),
