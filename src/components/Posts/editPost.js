@@ -12,7 +12,7 @@ export default Vue.extend({
   data() {
     return {
       post: {},
-      message: {},
+      message: null,
       id: this.$route.params.id
     };
   },
@@ -35,7 +35,7 @@ export default Vue.extend({
     showMessage(message = {}, timeout = 2000){
       this.message = message;
       setTimeout(() => {
-        this.message = {};
+        this.message = null;
       }, timeout);
     },
 

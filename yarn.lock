@@ -5576,10 +5576,6 @@ vm-browserify@0.0.4:
   dependencies:
     indexof "0.0.1"
 
-vue-form@^0.3.1:
-  version "0.3.1"
-  resolved "https://registry.yarnpkg.com/vue-form/-/vue-form-0.3.1.tgz#80f71fe2f3b7a4f4ebc71629e75129994cc3196d"
-
 vue-hot-reload-api@^2.0.1:
   version "2.0.7"
   resolved "https://registry.yarnpkg.com/vue-hot-reload-api/-/vue-hot-reload-api-2.0.7.tgz#45bd46cfeee7fd22550b467a76fa0c4a0ceae51b"

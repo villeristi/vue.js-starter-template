@@ -5,9 +5,16 @@
   </header>
   <form name="editPostForm" class="card card-block" @submit.prevent="handleSubmit" v-if="post">
 
-    <div v-if="message" class="alert" :class="{'alert-success': message.type}" role="alert">
-      {{message.text}}
-    </div>
+    <transition
+      name="post-message-animation"
+      enter-active-class="animated flipInX"
+      leave-active-class="animated flipOutX">
+      <div v-if="message">
+        <div class="alert" :class="{'alert-success': message.type === 'success'}" role="alert">
+          {{message.text}}
+        </div>
+      </div>
+    </transition>
 
     <div v-if="errors.any()" v-for="error in errors.errors" class="alert alert-danger" role="alert">
       <strong>Doh!</strong> {{error.msg}}
