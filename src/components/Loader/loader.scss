@@ -3,6 +3,7 @@ $vue-green: #41b883;
 .loader {
   font-size: 10px;
   position: absolute;
+  z-index: 9999; // Above everything...
   top: 50%;
   left: 50%;
   margin: -20px 0 0 -20px;
