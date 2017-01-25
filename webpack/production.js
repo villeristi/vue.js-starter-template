@@ -1,34 +1,11 @@
-var path = require('path');
-var webpack = require('webpack');
 var merge = require('webpack-merge');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var WebpackCleanupPlugin = require('webpack-cleanup-plugin');
 
 var webpackBase = require('./webpack.base.js');
+var plugins = require('./plugins');
 
 module.exports = merge(webpackBase, {
-  plugins: [
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: '"production"'
-      }
-    }),
-
-    new HtmlWebpackPlugin({
-      inject: 'body',
-      template: path.resolve(__dirname, '../src/index.html'),
-      minify: {
-        caseSensitive: true,
-        collapseWhitespace: true
-      },
-      favicon: path.resolve(__dirname, '../src/assets/images/favicon.ico')
-    }),
-    new WebpackCleanupPlugin(),
-    new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.optimize.UglifyJsPlugin({
-      compressor: {
-        warnings: false
-      }
-    }),
-  ]
+  plugins: plugins.production,
+  performance: {
+    hints: 'warning'
+  }
 });
