@@ -1,11 +1,12 @@
 {
   "name": "vue.js-starter-template",
-  "version": "0.7.3",
+  "version": "0.8.0",
   "description": "A starter for Vue.js-projects",
   "keywords": [
     "vue.js",
     "vue.js router",
     "axios",
+    "webpack 2",
     "animate.css"
   ],
   "author": "Wille Ristimäki <villeristimaki@gmail.com>",
