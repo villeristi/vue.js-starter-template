@@ -18,8 +18,9 @@ Built with:
 * [Font Awesome](http://fontawesome.io/)
 * [JSONPlaceholder](http://jsonplaceholder.typicode.com/)
 * [SASS](http://sass-lang.com/)
-* [Webpack](https://webpack.github.io/)
+* [Webpack 2](https://webpack.js.org/)
 * [Yarn](https://yarnpkg.com/en/docs/install)
+* ...and many more
 
 ## Getting started
 
@@ -35,9 +36,9 @@ See [instructions](docs/single-file-components.md) for example usage of [single 
 yarn start
 ```
 
-Runs the Webpack module-bundler, starts watching for changes & launches the BrowserSync server to [http://localhost:3000](http://localhost:3000) (it's possible to change the port from `package.json` config-section).
+Runs the Webpack module-bundler, starts watching for changes & launches the BrowserSync server to [http://localhost:3000](http://localhost:3000) (it's possible to change the port from `package.json` config-section). Uses [Webpack Dashboard](https://github.com/FormidableLabs/webpack-dashboard)
 
-**Note!** Webpack handles all the reloading stuff while BrowserSync just proxies the default webpack-port (`8080`) giving the possibility to connect to dev-server from multiple devices: 
+**Note!** Webpack handles all the reloading stuff while BrowserSync just proxies the default webpack-port (`8080`) giving the possibility to connect to dev-server from multiple devices:
 ![BrowserSync](.github/browsersync.png)
 
 
@@ -46,6 +47,18 @@ yarn lint:js
 ```
 
 Lints javascript-files inside `/src` directory
+
+```sh
+yarn validate:dev
+```
+
+Validates Webpack development configuration (useful if you add plugins / loaders)
+
+```sh
+yarn validate:prod
+```
+
+Validates Webpack production configuration (useful if you add plugins / loaders)
 
 ```sh
 yarn build
