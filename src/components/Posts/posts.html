@@ -1,10 +1,23 @@
-<div v-if="posts.length">
+<div v-show="posts.length" class="mb-4">
   <h1 class="mb-4"><i class="fa fa-file-text-o"></i> Posts</h1>
 
-  <div class="list-group">
-    <router-link class="list-group-item"
-                 v-for="(post, index) in posts"
-                 :to="{ name: 'post', params: { id: post.id }}">#{{ index+1 }} {{ post.title }}
-    </router-link>
+  <div class="form-group">
+    <input class="form-control" placeholder="Filter posts..." v-model="postsFilter">
   </div>
+
+  <transition-group
+    tag="div"
+    class="list-group"
+    :css="false"
+    @before-enter="handleBeforeEnter"
+    @enter="handleEnter">
+    <router-link v-if="filteredPosts.length"
+                 class="list-group-item"
+                 v-for="(post, index) in filteredPosts"
+                 :key="index"
+                 :data-index="index"
+                 :to="{ name: 'post', params: { id: post.id }}">
+      #{{ index+1 }} {{ post.title }}
+    </router-link>
+  </transition-group>
 </div>
