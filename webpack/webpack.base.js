@@ -1,90 +1,120 @@
 var path = require('path');
-var autoprefixer = require('autoprefixer');
+var qs = require('qs');
+var argv = require('minimist')(process.argv.slice(2));
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+
+var isProduction = !!((argv.env && argv.env.production) || argv.p);
+var sourceMapQueryStr = !isProduction ? '+sourceMap' : '-sourceMap';
 
 module.exports = {
-
   entry: {
     app: [path.resolve(__dirname, '../src/main.js')]
   },
-
   output: {
+    chunkFilename: '[id].chunk.js',
+    filename: 'js/[name].[hash].js',
     path: path.resolve(__dirname, '../build'),
     publicPath: '/',
-    filename: '[name].[hash].js',
-    sourceMapFilename: '[name].[hash].js.map',
-    chunkFilename: '[id].chunk.js',
+    sourceMapFilename: '[name].[hash].js.map'
   },
-
   resolve: {
-    extensions: ['', '.js', '.html'],
-    fallback: [path.join(__dirname, '../node_modules')],
     alias: {
-      'src': path.resolve(__dirname, '../src'),
       'assets': path.resolve(__dirname, '../src/assets'),
       'components': path.resolve(__dirname, '../src/components'),
+      'src': path.resolve(__dirname, '../src'),
       'vue$': 'vue/dist/vue.js'
     }
   },
-
+  devServer: {
+    colors: true,
+    historyApiFallback: true,
+    inline: true
+  },
   module: {
-    preLoaders: [
+    rules: [
       {
+        enforce: 'pre',
+        exclude: /node_modules/,
+        loader: 'eslint-loader',
+        test: /\.js?$/
+      },
+      {
+        exclude: /node_modules/,
+        loader: 'vue-loader',
+        test: /\.vue$/
+      },
+      {
+        exclude: /node_modules/,
+        loader: 'html-loader',
+        test: /\.html$/
+      },
+      {
+        exclude: [/(node_modules)(?![/|\\](bootstrap|foundation-sites))/],
         test: /\.js$/,
-        loader: 'eslint',
+        loaders: [{
+          loader: 'babel-loader',
+          query: {
+            presets: [[path.resolve('./node_modules/babel-preset-es2015'), { modules: false }]],
+            cacheDirectory: true
+          }
+        }]
+      },
+      {
+        test: /\.css$/,
         include: path.resolve(__dirname, '../src'),
-        exclude: /node_modules/
-      }
-    ],
-
-    loaders: [
-      {
-        test: /\.vue$/,
-        loader: 'vue'
+        loader: ExtractTextPlugin.extract({
+          fallbackLoader: 'style-loader',
+          loader: [
+            `css-loader?${sourceMapQueryStr}`,
+          ]
+        }),
       },
-
-      {
-        test: /\.html$/,
-        loader: 'html'
-      },
-
-      {
-        test: /\.js$/,
-        loader: 'babel',
-        exclude: /node_modules/
-      },
-
-      {
-        test: /\.(png|jpg|jpeg|gif)$/,
-        loader: 'url?prefix=img/&limit=5000'
-      },
-
       {
         test: /\.scss$/,
-        loader: 'style!css!postcss!sass?sourceMap'
+        include: path.resolve(__dirname, '../src'),
+        loader: ExtractTextPlugin.extract({
+          fallbackLoader: 'style-loader',
+          publicPath: '../',
+          loader: [
+            `css-loader?${sourceMapQueryStr}`,
+            `resolve-url-loader?${sourceMapQueryStr}`,
+            `sass-loader?${sourceMapQueryStr}`,
+          ]
+        }),
       },
-
       {
-        test: /\.(ttf|eot|svg)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: 'file'
+        test: /\.(png|jpe?g|gif|svg|xml|json)$/,
+        include: path.resolve(__dirname, '../src'),
+        loaders: [
+          `file-loader?${qs.stringify({
+            name: 'assets/img/[name].[ext]',
+          })}`
+        ]
       },
-
       {
-        test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: 'url?prefix=font/&limit=5000&mimetype=application/font-woff'
+        test: /\.(ttf|eot)$/,
+        include: path.resolve(__dirname, '../src'),
+        loader: `file-loader?${qs.stringify({
+          name: 'assets/vendor/[name].[ext]'
+        })}`
+      },
+      {
+        test: /\.woff2?$/,
+        include: path.resolve(__dirname, '../src'),
+        loader: `url-loader?${qs.stringify({
+          limit: 10000,
+          mimetype: 'application/font-woff',
+          name: 'assets/vendor/[name].[ext]'
+        })}`
+      },
+      {
+        test: /\.(ttf|eot|woff2?|png|jpe?g|gif|svg)$/,
+        include: /node_modules/,
+        loader: 'file-loader',
+        query: {
+          name: 'assets/vendor/[name].[ext]'
+        }
       }
     ]
-  },
-
-  babel: {
-    presets: ['es2015'],
-    plugins: ['transform-runtime']
-  },
-
-  eslint: {
-    formatter: require('eslint-friendly-formatter')
-  },
-
-  postcss: function () {
-    return [autoprefixer];
   }
 };
