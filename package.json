@@ -21,9 +21,7 @@
   "scripts": {
     "start": "webpack-dashboard -c magenta -t 'Vue.js-Starter-Template' -- webpack-dev-server --config webpack/development.js --progress",
     "build": "webpack --config webpack/production.js -p --progress",
-    "lint:js": "./node_modules/.bin/eslint src; exit 0;",
-    "validate:dev": "webpack-validator webpack/development.js",
-    "validate:prod": "webpack-validator webpack/production.js"
+    "lint:js": "./node_modules/.bin/eslint src; exit 0;"
   },
   "dependencies": {
     "axios": "^0.15.3",
@@ -78,7 +76,6 @@
     "webpack-dashboard": "^0.2.1",
     "webpack-dev-server": "^1.16.2",
     "webpack-merge": "^0.14.0",
-    "webpack-notifier": "^1.5.0",
-    "webpack-validator": "^2.2.9"
+    "webpack-notifier": "^1.5.0"
   }
 }

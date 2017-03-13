@@ -49,18 +49,6 @@ yarn lint:js
 Lints javascript-files inside `/src` directory
 
 ```sh
-yarn validate:dev
-```
-
-Validates Webpack development configuration (useful if you add plugins / loaders)
-
-```sh
-yarn validate:prod
-```
-
-Validates Webpack production configuration (useful if you add plugins / loaders)
-
-```sh
 yarn build
 ```
 
