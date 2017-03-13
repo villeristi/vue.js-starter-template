@@ -39,6 +39,16 @@ module.exports = {
         test: /\.js?$/
       },
       {
+        exclude: [/(node_modules)(?![/|\\](bootstrap|foundation-sites))/],
+        test: /\.js$/,
+        loaders: [{
+          loader: 'babel-loader',
+          query: {
+            cacheDirectory: true
+          }
+        }]
+      },
+      {
         exclude: /node_modules/,
         loader: 'vue-loader',
         test: /\.vue$/
@@ -47,17 +57,6 @@ module.exports = {
         exclude: /node_modules/,
         loader: 'html-loader',
         test: /\.html$/
-      },
-      {
-        exclude: [/(node_modules)(?![/|\\](bootstrap|foundation-sites))/],
-        test: /\.js$/,
-        loaders: [{
-          loader: 'babel-loader',
-          query: {
-            presets: [[path.resolve('./node_modules/babel-preset-es2015'), { modules: false }]],
-            cacheDirectory: true
-          }
-        }]
       },
       {
         test: /\.css$/,
