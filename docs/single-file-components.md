@@ -62,3 +62,28 @@ It's also possible to define your components with a [single file components](htt
 ```javascript
 import Loader from 'components/Loader/Loader.vue';
 ```
+
+4. Edit your webpack config `webpack/webpack.base.js` so that `.vue` files are linted. Look for `eslint-loader` part of module rules and change the `test` attribute:
+```javascript
+{
+    enforce: 'pre',
+    exclude: /node_modules/,
+    loader: 'eslint-loader',
+    test: /\.(js?|vue)$/
+},
+
+```
+
+5. Optionally, in the same config `webpack/webpack.base.js`, define `resolve.extensions` for [automatic extension resolution](https://webpack.js.org/configuration/resolve/#resolve-extensions) :
+```javascript
+ resolve: {
+    alias: {
+      ...
+    },
+    extensions: ['*','.js','.vue']
+},
+```
+This will allow you to @import `.js` and `.vue` files without having to specify their extension, i.e.
+```javascript
+import Loader from 'components/Loader/Loader';
+```
