@@ -83,7 +83,7 @@ import Loader from 'components/Loader/Loader.vue';
     extensions: ['*','.js','.vue']
 },
 ```
-This will allow you to @import `.js` and `.vue` files without having to specify their extension, i.e.
+This will allow you to import `.js` and `.vue` files without having to specify their extension, i.e.
 ```javascript
 import Loader from 'components/Loader/Loader';
 ```
