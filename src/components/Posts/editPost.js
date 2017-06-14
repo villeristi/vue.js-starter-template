@@ -13,8 +13,14 @@ export default Vue.extend({
     return {
       post: {},
       message: null,
-      id: this.$route.params.id
+      id: this.$route.params.id,
     };
+  },
+
+  computed: {
+    isDirty() {
+      return Object.keys(this.fields).some(key => this.fields[key].dirty);
+    }
   },
 
   created(){

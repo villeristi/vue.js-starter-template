@@ -16,6 +16,12 @@ export default Vue.extend({
     };
   },
 
+  computed: {
+    isDirty() {
+      return Object.keys(this.fields).some(key => this.fields[key].dirty);
+    }
+  },
+
   methods: {
     handleSubmit(){
       this.$validator.validateAll().then((success) => {
