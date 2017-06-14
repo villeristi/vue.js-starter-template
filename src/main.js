@@ -3,7 +3,7 @@ import VueRouter from 'vue-router';
 
 import { LoadingState } from 'src/config/loading-state';
 import Navigation from 'components/Navigation/navigation';
-import Loader from 'components/Loader/Loader';
+import Loader from 'components/Loader/loader';
 
 Vue.use(VueRouter);
 
