@@ -21,7 +21,7 @@
   "scripts": {
     "start": "webpack-dashboard -c magenta -t 'Vue.js-Starter-Template' -- webpack-dev-server --config webpack/development.js --progress",
     "build": "webpack --config webpack/production.js -p --progress",
-    "lint:js": "./node_modules/.bin/eslint src; exit 0;"
+    "lint:js": "eslint src"
   },
   "dependencies": {
     "axios": "^0.16.2",
