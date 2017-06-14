@@ -62,8 +62,8 @@ module.exports = {
         test: /\.css$/,
         include: path.resolve(__dirname, '../src'),
         loader: ExtractTextPlugin.extract({
-          fallbackLoader: 'style-loader',
-          loader: [
+          fallback: 'style-loader',
+          use: [
             `css-loader?${sourceMapQueryStr}`,
           ]
         }),
@@ -72,9 +72,9 @@ module.exports = {
         test: /\.scss$/,
         include: path.resolve(__dirname, '../src'),
         loader: ExtractTextPlugin.extract({
-          fallbackLoader: 'style-loader',
+          fallback: 'style-loader',
           publicPath: '../',
-          loader: [
+          use: [
             `css-loader?${sourceMapQueryStr}`,
             `resolve-url-loader?${sourceMapQueryStr}`,
             `sass-loader?${sourceMapQueryStr}`,
