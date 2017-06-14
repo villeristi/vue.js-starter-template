@@ -55,8 +55,8 @@ export default Vue.extend({
             text: 'Post updated!'
           });
 
-          // We need to reset the fields after successfull request
-          this.fields.reset();
+          // TODO: We need to reset the form after success....
+          // this.fields.reset();
         })
         .catch((errorResponse) => {
           // Handle error...
