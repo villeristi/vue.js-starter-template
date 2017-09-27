@@ -1,10 +1,8 @@
-var path = require('path');
-var qs = require('qs');
-var argv = require('minimist')(process.argv.slice(2));
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
+const path = require('path');
+const argv = require('minimist')(process.argv.slice(2));
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-var isProduction = !!((argv.env && argv.env.production) || argv.p);
-var sourceMapQueryStr = !isProduction ? '+sourceMap' : '-sourceMap';
+const isProduction = !!((argv.env && argv.env.production) || argv.p);
 
 module.exports = {
   entry: {
@@ -15,7 +13,8 @@ module.exports = {
     filename: 'js/[name].[hash].js',
     path: path.resolve(__dirname, '../build'),
     publicPath: '/',
-    sourceMapFilename: '[name].[hash].js.map'
+    sourceMapFilename: '[name].[hash].js.map',
+    // pathinfo: true
   },
   resolve: {
     alias: {
@@ -23,12 +22,14 @@ module.exports = {
       'components': path.resolve(__dirname, '../src/components'),
       'src': path.resolve(__dirname, '../src'),
       'vue$': 'vue/dist/vue.js'
-    }
+    },
+    extensions: ['*', '.js', '.vue', 'html'],
   },
   devServer: {
-    colors: true,
     historyApiFallback: true,
-    inline: true
+    inline: true,
+    contentBase: path.resolve(__dirname, '../src'),
+    compress: true
   },
   module: {
     rules: [
@@ -41,7 +42,7 @@ module.exports = {
       {
         exclude: [/(node_modules)(?![/|\\](bootstrap|foundation-sites))/],
         test: /\.js$/,
-        loaders: [{
+        use: [{
           loader: 'babel-loader',
           query: {
             cacheDirectory: true
@@ -60,60 +61,89 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        include: path.resolve(__dirname, '../src'),
-        loader: ExtractTextPlugin.extract({
+        loader: ['css-hot-loader'].concat(ExtractTextPlugin.extract({
           fallback: 'style-loader',
           use: [
-            `css-loader?${sourceMapQueryStr}`,
-          ]
-        }),
+            {
+              loader: 'cache-loader'
+            },
+            {
+              loader: 'css-loader',
+              options: {
+                sourceMap: !isProduction
+              }
+            }],
+        })),
       },
       {
         test: /\.scss$/,
         include: path.resolve(__dirname, '../src'),
-        loader: ExtractTextPlugin.extract({
+        loader: ['css-hot-loader'].concat(ExtractTextPlugin.extract({
           fallback: 'style-loader',
-          publicPath: '../',
           use: [
-            `css-loader?${sourceMapQueryStr}`,
-            `resolve-url-loader?${sourceMapQueryStr}`,
-            `sass-loader?${sourceMapQueryStr}`,
-          ]
-        }),
+            {
+              loader: 'css-loader',
+              options: {
+                sourceMap: !isProduction
+              }
+            },
+            {
+              loader: 'resolve-url-loader',
+              options: {
+                sourceMap: !isProduction
+              }
+            },
+            {
+              loader: 'sass-loader',
+              options: {
+                sourceMap: !isProduction
+              }
+            },
+          ],
+        }))
       },
       {
         test: /\.(png|jpe?g|gif|svg|xml|json)$/,
         include: path.resolve(__dirname, '../src'),
-        loaders: [
-          `file-loader?${qs.stringify({
+        use: {
+          loader: 'file-loader',
+          options: {
             name: 'assets/img/[name].[ext]',
-          })}`
-        ]
+          },
+        },
       },
       {
         test: /\.(ttf|eot)$/,
         include: path.resolve(__dirname, '../src'),
-        loader: `file-loader?${qs.stringify({
-          name: 'assets/vendor/[name].[ext]'
-        })}`
+        use: {
+          loader: 'file-loader',
+          options: {
+            name: 'assets/vendor/[name].[ext]',
+          },
+        },
       },
       {
         test: /\.woff2?$/,
         include: path.resolve(__dirname, '../src'),
-        loader: `url-loader?${qs.stringify({
-          limit: 10000,
-          mimetype: 'application/font-woff',
-          name: 'assets/vendor/[name].[ext]'
-        })}`
+        use: {
+          loader: 'url-loader',
+          options: {
+            limit: 10000,
+            mimetype: 'application/font-woff',
+            name: 'assets/vendor/[name].[ext]',
+          },
+        },
       },
       {
         test: /\.(ttf|eot|woff2?|png|jpe?g|gif|svg)$/,
         include: /node_modules/,
-        loader: 'file-loader',
-        query: {
-          name: 'assets/vendor/[name].[ext]'
-        }
-      }
-    ]
-  }
+        use: {
+          loader: 'file-loader',
+          query: {
+            name: 'assets/vendor/[name].[ext]'
+          },
+        },
+      },
+    ],
+  },
 };
