@@ -1,27 +1,26 @@
-var argv = require('minimist')(process.argv.slice(2));
-var autoprefixer = require('autoprefixer');
-var BrowserSyncPlugin = require('browser-sync-webpack-plugin');
-var DashboardPlugin = require('webpack-dashboard/plugin');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var FaviconsWebpackPlugin = require('favicons-webpack-plugin');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var imageminMozjpeg = require('imagemin-mozjpeg');
-var ImageminPlugin = require('imagemin-webpack-plugin').default;
-var OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-var path = require('path');
-var webpack = require('webpack');
-var WebpackCleanupPlugin = require('webpack-cleanup-plugin');
-var WebpackNotifierPlugin = require('webpack-notifier');
+const argv = require('minimist')(process.argv.slice(2));
+const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
+const DashboardPlugin = require('webpack-dashboard/plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const imageminMozjpeg = require('imagemin-mozjpeg');
+const ImageminPlugin = require('imagemin-webpack-plugin').default;
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const path = require('path');
+const webpack = require('webpack');
+const WebpackCleanupPlugin = require('webpack-cleanup-plugin');
+const WebpackNotifierPlugin = require('webpack-notifier');
 
-var pkg = require('../package.json');
+const pkg = require('../package.json');
 
-var isProduction = !!((argv.env && argv.env.production) || argv.p);
+const isProduction = !!((argv.env && argv.env.production) || argv.p);
 
 /**
  * Common plugins
  * @type {*[]}
  */
-var commonPlugins = [
+const commonPlugins = [
   new HtmlWebpackPlugin({
     inject: 'body',
     template: path.resolve(__dirname, '../src/index.html'),
@@ -30,7 +29,7 @@ var commonPlugins = [
   new webpack.LoaderOptionsPlugin({
     minimize: isProduction,
     debug: !isProduction,
-    stats: { colors: true },
+    stats: {colors: true},
     eslint: {
       configFile: path.resolve(__dirname, '../.eslintrc'),
       failOnWarning: false,
@@ -68,8 +67,9 @@ var commonPlugins = [
  * Develop plugins
  * @type {Array.<*>}
  */
-var developPlugins = [
+const developPlugins = [
   new DashboardPlugin(),
+  new webpack.NamedModulesPlugin(),
   new WebpackNotifierPlugin({
     title: pkg.name,
     contentImage: path.join(__dirname, '../src/assets/images/logo.png')
@@ -94,7 +94,7 @@ var developPlugins = [
  * Production plugins
  * @type {Array.<*>}
  */
-var productionPLugins = [
+const productionPLugins = [
   new webpack.DefinePlugin({
     'process.env': {
       NODE_ENV: '"production"'
@@ -124,7 +124,7 @@ var productionPLugins = [
       android: true,              // Create Android homescreen icon. `boolean`
       appleIcon: true,            // Create Apple touch icons. `boolean` or `{ offset: offsetInPercentage }`
       appleStartup: false,        // Create Apple startup images. `boolean`
-      coast: { offset: 25 },      // Create Opera Coast icon with offset 25%. `boolean` or `{ offset: offsetInPercentage }`
+      coast: {offset: 25},      // Create Opera Coast icon with offset 25%. `boolean` or `{ offset: offsetInPercentage }`
       favicons: true,             // Create regular favicons. `boolean`
       firefox: true,              // Create Firefox OS icons. `boolean` or `{ offset: offsetInPercentage }`
       windows: true,              // Create Windows 8 tile icons. `boolean`
